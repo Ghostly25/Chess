@@ -1,0 +1,35 @@
+Psudocode:
+
+Global Variables that are needed:
+
+  Board: 2D array that keeps track of the pieces on the borad. 
+  Player_turn: Boolean - Player_1 == true and player_2 == false.
+  Time_1: This will keep track of the time for player one.
+  Time_2: This will keep track of the time for player two.
+  
+
+
+
+
+
+Classes:
+  Pieces
+    - This class will be the parent function for all the pieces in chess.
+    - It will contants an array, colour, x, and y.
+    - Have a boolean to keep track if this is the pieces.
+    - Have a boolean to see if it was taken.
+
+  All the other pieces
+    - The other pieces needs its own valid move function.
+    - For the king, we will need to add a function to check if the king is in check in the next/current move.
+    - King, function for CanCastleRight, CanCastleLeft, InCheck.
+    - Queen, function for RookMovenet, BishiopMovenet.
+    - Bishiop, will get it's functions the the queen.
+    - Rook, will get it's movement function from the queen.
+    - Pawn, function for MoveForward, FirstMoveSet, CanEnPassant, CanAttack.
+    - Knight, function LMovemnet, 
+
+Functions:
+
+  Check
+    - This needs to check that after every move, it need to check for a check.

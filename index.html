@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Give your game / page a title! -->
+  <title> Chess </title>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link href="style.css" rel="stylesheet" type="text/css" />
+
+  <!-- This will load the script file AFTER the document is loaded -->
+  <script src="script.js" defer></script>
+  <link rel="preload" as="image" href="images/Black_Rook.png" />
+  <link rel="preload" as="image" href="images/Black_Bishop.png" />
+  <link rel="preload" as="image" href="images/Black_Knight.png" />
+  <link rel="preload" as="image" href="images/Black_Queen.png" />
+  <link rel="preload" as="image" href="images/Black_King.png" />
+  <link rel="preload" as="image" href="images/Black_Pawn.png" />
+  <link rel="preload" as="image" href="images/White_Rook.png" />
+  <link rel="preload" as="image" href="images/White_Bishop.png" />
+  <link rel="preload" as="image" href="images/White_Knight.png" />
+  <link rel="preload" as="image" href="images/White_Queen.png" />
+  <link rel="preload" as="image" href="images/White_King.png" />
+  <link rel="preload" as="image" href="images/White_Pawn.png" />
+</head>
+
+<body>
+  <div class="game">
+    <div class="game_data">
+      <div id="player2_data" class="player2_data">
+        <h3 id="player_2_name">Player 2</h3>
+        <div id="player_2_time">10:00</div>
+      </div>
+
+
+      <div class="myCanvas">
+        <canvas id="myCanvas" width="800" height="800" style="border:1px solid #000000;"></canvas>
+      </div>
+
+      <div id="player1_data" class="player1_data">
+        <h3 id="player_1_name">Player 1</h3>
+        <div id="player_1_time">10:00</div>
+      </div>
+    </div>
+
+    <div id="moveset_chart" class="moveset_chart" style="visibility: hidden">
+      <h2> Moves: </h2>
+      <hr>
+      <div class="moveset_data">
+        <div id="moveset_turns" class="movesets_turns"></div>
+        <div id="moveset_white" class="movesets_turns"></div>
+        <div id="moveset_black" class="movesets_turns"></div>
+      </div>
+    </div>
+    <div id="start_screen" class="start_screen">
+      <h3>START GAME</h3>
+      <h4>Select Time</h4>
+      <select id="set_time" class="set_time">
+        <option value="10">10 Min</option>
+        <option value="5">5 Min</option>
+        <option value="3">3 Min</option>
+        <option value="1">1 Min</option>
+      </select>
+      <button id="start_button" class="start_button">START</button>
+      <button id="instruction_button" class="instruction_button">INSTRUCTIONS</button>
+      <p id="instruction" style="visibility: hidden">Click on desired piece and then click on gray circles to move said piece. White moves first, then player alternate moves. Play continues until a King has no more moves and it being threatened, your timer runs out, or King has no more moves and is not being threatened. Have fun! </p>
+    </div>
+  </div>
+  <div id="pawn_promotion" class="pawn_promotion" hidden>
+    <div class="promotion_content">
+      <h3>Promote Pawn</h3>
+      <div class="pawn_promotion_buttons"> 
+        <button class="pawn_promotion_button"><img id="queen" src="images/Black_Queen.png"></button>
+        <button class="pawn_promotion_button"><img id="rook" src="images/Black_Rook.png"></button>
+        <button class="pawn_promotion_button"><img id="bishop" src="images/Black_Bishop.png"></button>
+        <button class="pawn_promotion_button"><img id="knight" src="images/Black_Knight.png"></button>
+      </div>
+    </div>
+  </div>
+
+  <div id="game_over" class="game_over" style="visibility: hidden">
+    <div id="game_state" class="game_state">Wins</div>
+    <button id="rematch" class="rematch">Rematch</button>
+    <button id="end_game" class="end_game">End Game</button>
+  </div>
+</body>
+
+
+</html>
