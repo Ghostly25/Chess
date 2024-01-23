@@ -1666,7 +1666,6 @@ function restart_game() {
   
   // Redo the timer
   set_time();
-  start_timer();
   
 }
 
