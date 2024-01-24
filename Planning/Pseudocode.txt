@@ -29,7 +29,21 @@ Classes:
     - Pawn, function for MoveForward, FirstMoveSet, CanEnPassant, CanAttack.
     - Knight, function LMovemnet, 
 
+
 Functions:
 
   Check
-    - This needs to check that after every move, it need to check for a check.
+    - This needs to check that after every move, the king is in check.
+    - If the King is in check, we need to return true.
+
+  Draw board
+    - We will just have it draw the square depend on if it is dark or light square.
+    - We also need to draw the letter and number for coords.
+    - Hint: For Loops
+
+  Checkmate
+    - Needs to check if the king is in check and cannot move.
+    - Also need to get all the other pieces of the same colour of the king and check if they can move.
+    - Ton of if statemates.
+
+  

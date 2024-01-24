@@ -1364,21 +1364,24 @@ function start_timer() {
 }
 
 function update_timer() {
-  // Check whose turn it is
-  if (player_turn) {
-    // Count down and change it on screen
-    time_1--;
-    $("player_1_time").innerHTML = show_time(time_1);
-  }
-  else {
-    // Count down and change it on screen
-    time_2--;
-    $("player_2_time").innerHTML = show_time(time_2);
-  }
-  // Lost on time
-  if (time_1 <= 0 || time_2 <= 0) {
-    clear_timer();
-    game_over("time");
+  // DO NOT UPDATE TIMER IF THE INPUT IS BLOCKED
+  if (!block_input) {
+    // Check whose turn it is
+    if (player_turn) {
+      // Count down and change it on screen
+      time_1--;
+      $("player_1_time").innerHTML = show_time(time_1);
+    }
+    else {
+      // Count down and change it on screen
+      time_2--;
+      $("player_2_time").innerHTML = show_time(time_2);
+    }
+    // Lost on time
+    if (time_1 <= 0 || time_2 <= 0) {
+      clear_timer();
+      game_over("time");
+    }
   }
 }
 
@@ -1405,6 +1408,8 @@ function show_time(seconds) {
 }
 
 function show_pawn_promotion() {
+  // Block input
+  block_input= true;
   // Make the popout visiable
   $("pawn_promotion").removeAttribute("hidden");
   // Check what colour piece got to the end of the board to display the proper pieces
@@ -1420,8 +1425,6 @@ function show_pawn_promotion() {
     $("bishop").src = "images/Black_Bishop.png";
     $("knight").src = "images/Black_Knight.png";
   }
-  // Block input
-  block_input= true;
 }
 
 function pawn_promotion(event) {
