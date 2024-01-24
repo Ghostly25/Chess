@@ -251,6 +251,10 @@ class Pieces {
     const final_square = files[new_x] + ranks[new_y];
     // If it is pawn don't add the P but if it is anything else, add the first character of it
     let notation = this.type == "Pawn" ? "" : this.type.charAt(0);
+    // Added after the fact
+    if (this.type == "Knight") {
+      notation = "N";
+    }
     // If it is a pawn and it was a captrue
     if (this.type == "Pawn") {
       if (this.capture) {
@@ -332,7 +336,7 @@ class Pieces {
       }
     }
     // Check for checkmate, check, or stalemate.
-    if (this.is_checkmate()) {
+    if (this.is_checkmate() && enemy_king.is_in_check()) {
       notation += "#";
       game_over(this.colour);
     }
@@ -399,7 +403,8 @@ class Pieces {
         board[move[1]][move[0]] = piece;
         board[piece.y][piece.x] = null;
         // Is it no longer in check, then no more checkmate
-        if (!enemy_king.is_in_check()) {
+        if (!enemy_king.is_in_check() || moves.length > 0) {
+          console.log("Not check any more")
           // Move back return false
           board[move[1]][move[0]] = og_piece;
           board[piece.y][piece.x] = piece;
@@ -1423,7 +1428,7 @@ function show_time(seconds) {
 
 function show_pawn_promotion() {
   // Block input
-  block_input= true;
+  block_input = true;
   // Make the popout visiable
   $("pawn_promotion").removeAttribute("hidden");
   // Check what colour piece got to the end of the board to display the proper pieces
@@ -1444,6 +1449,7 @@ function show_pawn_promotion() {
 function pawn_promotion(event) {
   // 
   let button = event.target.id;
+  console.log(button)
   // Get the file and rank becuase we need to do notation of the promotion
   const enemy_king = piece_to_move.colour == "white" ? blackKing : whiteKing;
   const files = ["a", "b", "c", "d", "e", "f", "g", "h"];
@@ -1486,7 +1492,7 @@ function pawn_promotion(event) {
     game_over(piece_to_move.colour);
   }
   else if (enemy_king.is_in_check()) notation += "+";
-  else if (this.is_stalemate(enemy_king.colour)) {
+  else if (enemy_king.is_stalemate(enemy_king.colour)) {
     notation += "$";
     game_over(enemy_king.colour);
   }
