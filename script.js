@@ -962,6 +962,13 @@ class Knight extends Pieces {
     // Return that baby
     return moves;
   }
+  // Added after the sumitted thing
+  is_capture_valid(next) {
+    // Is this capture valid and you're not in check?
+    const x = next[0];
+    const y = next[1];
+    return ((x >= 0) && (x < 8) && (y < 8) && (y >= 0) && (board[y][x] !== null) && (board[y][x].colour !== this.colour));
+  }
 
   can_block(next) {
     // Check if the pawn can block a check for the king but simulating the move and checking
@@ -1080,7 +1087,14 @@ class Pawn extends Pieces {
     // Return the arry
     return moves;
   }
-
+  // Added after the summit thing
+  is_capture_valid(next) {
+    // Is this capture valid and you're not in check?
+    const x = next[0];
+    const y = next[1];
+    return ((x >= 0) && (x < 8) && (y < 8) && (y >= 0) && (board[y][x] !== null) && (board[y][x].colour !== this.colour));
+  }
+  
   can_block(next) {
     // Check if the pawn can block a check for the king but simulating the move and checking
     // if the King is still in check
