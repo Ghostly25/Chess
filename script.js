@@ -1571,12 +1571,12 @@ function game_over(colour) {
     const king = colour == "white" ? whiteKing: blackKing;
     $("game_over").style.visibility = "visible";
     // If game won by checkmate, see which colour won
-    if (enemy_king.is_checkmate) {
+    if (enemy_king.is_checkmate()) {
       $("game_state").innerText = colour.toUpperCase() + " WINS"
       $("game_state").innerHTML += "<br>";
       $("game_state").innerText += "CHECKMATE"
     }
-    else if (king.is_checkmate) {
+    else if (king.is_checkmate()) {
       $("game_state").innerText = enemy_colour.toUpperCase() + " WINS"
       $("game_state").innerHTML += "<br>";
       $("game_state").innerText += "CHECKMATE"
